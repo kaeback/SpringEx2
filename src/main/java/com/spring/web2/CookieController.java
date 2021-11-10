@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * ÄíÅ° »ç¿ë ¿¹Á¦
+ * ì¿ ì¹´ ì‚¬ìš© ì˜ˆì œ
  */
 @Controller
 public class CookieController {
 	/**
-	 * ÄíÅ° ÀúÀå
+	 * ì¿ í‚¤ ì €ì¥
 	 */
 	@RequestMapping(value = "cookie1", method = RequestMethod.GET)
 	public String cookie1(HttpServletResponse response) {
-		// ÄíÅ° »ı¼º
+		// ì¿ í‚¤ ìƒì„±
 		Cookie cookie1 = new Cookie("id", "abc");
 		Cookie cookie2 = new Cookie("num", "123");
-		// Å¬¶óÀÌ¾ğÆ® ÄíÅ° ÀúÀå
+		// í´ë¼ì´ì–¸íŠ¸ ì¿ í‚¤ ì €ì¥
 		response.addCookie(cookie1);
 		response.addCookie(cookie2);
 		
@@ -30,16 +30,16 @@ public class CookieController {
 	}
 	
 	/**
-	 * ÄíÅ° »èÁ¦
+	 * ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½
 	 */
 	@RequestMapping(value = "cookie2", method = RequestMethod.GET)
 	public String cookie2(HttpServletResponse response) {
-		// °°Àº ÀÌ¸§À¸·Î À¯Áö ½Ã°£ÀÌ 0ÀÎ ÄíÅ° »ı¼º
+		// ê°™ì€ ì´ë¦„ìœ¼ë¡œ ìœ ì§€ ì‹œê°„ì¸ 0ì¸ ì¿ í‚¤ ìƒì„±
 		Cookie cookie1 = new Cookie("id", null);
 		cookie1.setMaxAge(0);
 		Cookie cookie2 = new Cookie("num", null);
 		cookie2.setMaxAge(0);
-		// Å¬¶óÀÌ¾ğÆ®·Î ÀúÀåÇÏ¿© µ¤¾î ¾¸
+		// í´ë¼ì´ì–¸íŠ¸ë¡œ ì €ì¥í•˜ì—¬ ë®ì–´ ì”€
 		response.addCookie(cookie1);
 		response.addCookie(cookie2);
 		
@@ -47,28 +47,28 @@ public class CookieController {
 	}
 	
 	/**
-	 * ¸ğµç ÄíÅ° ÀĞ±â
+	 * ëª¨ë“  ì¿ í‚¤ ì½ê¸°
 	 */
 	@RequestMapping(value = "cookie3", method = RequestMethod.GET)
 	public String cookie3(HttpServletRequest request) {
-		// Å¬¶óÀÌ¾ğÆ®ÀÇ ¸ğµç ÄíÅ°¸¦ ¹è¿­·Î ÀĞ¾î¿È
+		// í´ë¼ì´ì–¸íŠ¸ì˜ ëª¨ë“  ì¿ í‚¤ë¥¼ ë°°ì—´ë¡œ ì½ì–´ì˜´
 		Cookie[] cks = request.getCookies();
 		
 		for (Cookie cookie : cks) {
-			System.out.println("ÀÌ¸§ : " + cookie.getName() + ", °ª : " + cookie.getValue());
+			System.out.println("ì´ë¦„ : " + cookie.getName() + ", ê°’ : " + cookie.getValue());
 		}
 		
 		return "redirect:";
 	}
 	
 	/**
-	 * annotationÀ» ÀÌ¿ëÇÏ¿© Æ¯Á¤ ÄíÅ° ÀĞ±â
+	 * annotationì„ ì´ìš©í•˜ì—¬ íŠ¹ì • ì¿ í‚¤ ì½ê¸°
 	 */
 	@RequestMapping(value = "cookie4", method = RequestMethod.GET)
 	public String cookie4(@CookieValue(value = "id", defaultValue = "none") String id, 
 						@CookieValue(value = "num", defaultValue = "0") int num) {
 		
-		// ÇØ´ç ÀÌ¸§À» °¡Áø ÄíÅ°ÀÇ °ªÀ» ÀĞ¾î¿Â´Ù.
+		// í•´ë‹¹ ì´ë¦„ì„ ê°€ì§„ ì¿ í‚¤ì˜ ê°’ì„ ì½ì–´ì˜¨ë‹¤.
 		System.out.println("id = " + id);
 		System.out.println("num = " + num);
 		
