@@ -58,7 +58,7 @@ public class CookieController {
 			System.out.println("이름 : " + cookie.getName() + ", 값 : " + cookie.getValue());
 		}
 		
-		return "redirect:";
+		return "redirect:/";
 	}
 	
 	/**
