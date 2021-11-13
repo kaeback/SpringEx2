@@ -29,7 +29,7 @@ public class SessionController2 {
 	
 	// 세선에 값 추가 저장
 	@RequestMapping(value = "step3", method = RequestMethod.GET)
-	public String test4(/* @ModelAttribute("data1") String data1, */Model model) {
+	public String test4(@ModelAttribute("data1") String data1, Model model) {
 		model.addAttribute("data2", "step3에서 모델에 저장한 value3");
 		
 		return "step";
@@ -37,8 +37,8 @@ public class SessionController2 {
 	
 	// 프로세스의 마지막 단계에서 세션에 저장된 값을 지움
 	@RequestMapping(value = "end", method = RequestMethod.GET)
-	public String end(/*@ModelAttribute("data1") String data1, 
-						@ModelAttribute("data2") String data2,*/ 
+	public String end(@ModelAttribute("data1") String data1, 
+						@ModelAttribute("data2") String data2, 
 						Model model, 
 						SessionStatus sessionStatus) {
 		
